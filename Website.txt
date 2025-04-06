@@ -1,0 +1,57 @@
+Website 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>FutureTeller</title>
+  <style>
+    body { font-family: Arial; padding: 20px; background: #f0f4f8; }
+    .container { max-width: 500px; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px rgba(0,0,0,0.1); }
+    h1 { text-align: center; color: #333; }
+    label { display: block; margin-top: 10px; }
+    input, select { width: 100%; padding: 8px; margin-top: 5px; }
+    button { margin-top: 20px; width: 100%; padding: 10px; background: #4CAF50; color: white; border: none; border-radius: 5px; }
+    .result { margin-top: 20px; padding: 10px; background: #e0ffe0; border-radius: 5px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>FutureTeller</h1>
+    <p>Enter your biodata to discover your future!</p>
+    <label>Name:</label>
+    <input type="text" id="name" />
+
+    <label>Birth Year:</label>
+    <input type="number" id="birthYear" />
+
+    <label>Favorite Color:</label>
+    <input type="text" id="color" />
+
+    <label>Career Goal:</label>
+    <input type="text" id="career" />
+
+    <button onclick="predictFuture()">Tell My Future</button>
+
+    <div class="result" id="futureResult"></div>
+  </div>
+
+  <script>
+    function predictFuture() {
+      const name = document.getElementById('name').value;
+      const birthYear = document.getElementById('birthYear').value;
+      const color = document.getElementById('color').value;
+      const career = document.getElementById('career').value;
+
+      const age = new Date().getFullYear() - birthYear;
+      const messages = [
+        `Dear ${name}, your journey to become a ${career} is destined to shine. Embrace your passion for ${color}—it will guide you.`,
+        `The stars align for ${name}. At age ${age}, a big opportunity awaits related to ${career}. Stay true to your favorite color, ${color}, for luck.`,
+        `By next year, ${name}, your ${career} dreams will come alive. Trust the magic of ${color}.`
+      ];
+
+      const result = messages[Math.floor(Math.random() * messages.length)];
+      document.getElementById('futureResult').textContent = result;
+    }
+  </script>
+</body>
+</html>
